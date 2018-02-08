@@ -5,24 +5,24 @@ import java.util.*;
  */
 public class SetPractice {
     /**
-     * Add zero or more items to the set, and print what is being added.
+     * Add zero or more items to the collection, and print what is being added.
      *
-     * @param set    is the Set to add items to
-     * @param values zero or more Strings to add to set
+     * @param collection    is the Collection to add items to
+     * @param values zero or more Strings to add to collection
      */
-    public static void addAll(Set<String> set, String... values) {
+    public static void addAll(Collection<String> collection, String... values) {
         for (String value : values) {
+            collection.add(value);
             System.out.print(value + " ");
-            set.add(value);
         }
         System.out.println();
     }
 
     /**
-     * Print all the elements in a set, using an Iterator.
+     * Print all the elements in a collection, using an Iterator.
      */
-    public static void print(Set<String> set) {
-        Iterator<String> iterator = set.iterator();
+    public static void print(Collection<String> collection) {
+        Iterator<String> iterator = collection.iterator();
         while (iterator.hasNext()) {
             System.out.print(iterator.next() + " ");
         }
@@ -73,37 +73,28 @@ public class SetPractice {
 
     /**
      * Test the set for property.
-     * @param testSet set to test.
+     * @param testCollection set to test.
      */
-    public static void setTest(Set<String> testSet) {
+    public static void setTest(Collection<String> testCollection) {
         System.out.println("Add test:");
         System.out.println("Order [dog, ant, bird, elephant, cat]");
-        testSet.add("dog");
-        testSet.add("ant");
-        testSet.add("bird");
-        testSet.add("elephant");
-        testSet.add("cat");
+        addAll(testCollection, "dog", "ant", "bird", "elephant", "cat");
 
         System.out.println("Set contains: ");
-        print(testSet);
+        print(testCollection);
 
         System.out.println("Clear and add");
         System.out.println("Order [cat, dog, elephant, bird, ant]");
-        testSet.clear();
-        testSet.add("cat");
-        testSet.add("dog");
-        testSet.add("elephant");
-        testSet.add("bird");
-        testSet.add("ant");
+        testCollection.clear();
+        addAll(testCollection, "cat", "elephant", "bird", "ant", "dog");
 
         System.out.println("Set contains: ");
-        print(testSet);
+        print(testCollection);
 
         System.out.println("Add duplicate: cat and dog");
-        testSet.add("cat");
-        testSet.add("dog");
+        addAll(testCollection, "cat", "dog");
         System.out.println("Set contains: ");
-        print(testSet);
+        print(testCollection);
 
         System.out.println();
 
